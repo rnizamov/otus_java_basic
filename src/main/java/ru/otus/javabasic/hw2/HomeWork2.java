@@ -99,9 +99,9 @@ public class HomeWork2 {
         }
 
         if (hasPoint) {
-            System.out.println("Точка находится между элементами");
+            System.out.println("Точка сумм левой и правой части находится между элементами");
         } else {
-            System.out.println("Точка не находится между элементами");
+            System.out.println("Точка сумм левой и правой части нет");
         }
     }
 
