@@ -89,7 +89,7 @@ public class HomeWork2 {
         System.out.println(Arrays.toString(resultArray));
     }
 
-// Реализуйте метод, проверяющий что есть “точка” в массиве, в которой сумма левой и правой части
+    // Реализуйте метод, проверяющий что есть “точка” в массиве, в которой сумма левой и правой части
 //равны. “Точка находится между элементами”;
 //Пример: { 1, 1, 1, 1, 1, | 5 }, { 5, | 3, 4, -2 }, { 7, 2, 2, 2 }, { 9, 4 }
     public static void hasPointOfArrayWhereSumsIsEquals(int[] array) {
@@ -105,26 +105,20 @@ public class HomeWork2 {
             System.out.println("Точек сумм левой и правой части нет");
             return;
         }
-        for (int k = 1; k < array.length - 1; k++) {
-            int sumLeft = 0;
-            int sumRight = 0;
-
-            for (int i = 0; i < k; i++) {
-                sumLeft += array[i];
-            }
-            for (int j = k; j < array.length; j++) {
-                sumRight += array[j];
-            }
-            if (sumLeft == sumRight) {
+        int sumElements = 0;
+        for (int i = 0; i < array.length; i++) {
+            sumElements += array[i];
+            if (sumElements == sum / 2) {
                 System.out.println("Точка сумм левой и правой части находится между элементами");
                 return;
             }
         }
+        System.out.println("Точек сумм левой и правой части нет");
     }
 
     // Реализуйте метод, проверяющий что все элементы массива идут в порядке убывания или
     // возрастания (по выбору пользователя)
-    public static  void checkArrayDirection(String direction, int[] array) {
+    public static void checkArrayDirection(String direction, int[] array) {
         if (array.length == 0) {
             System.out.println("массив пустой!");
             return;
