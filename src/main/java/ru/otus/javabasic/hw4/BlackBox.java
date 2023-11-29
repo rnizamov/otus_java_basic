@@ -84,16 +84,4 @@ public class BlackBox {
         hasObject = false;
         System.out.println("Предмет удален: " + obj);
     }
-
-    public static void main(String[] args) {
-        BlackBox box = new BlackBox(200, 200, "black");
-        box.open();
-        box.add("другая коробка");
-        box.close();
-        box.clear();
-        box.open();
-        box.add("еще одна коробочка");
-        box.clear();
-        box.add("кот");
-    }
 }

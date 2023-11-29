@@ -35,6 +35,16 @@ public class Main {
                 System.out.println();
             }
         }
+
+        BlackBox box = new BlackBox(200, 200, "black");
+        box.open();
+        box.add("другая коробка");
+        box.close();
+        box.clear();
+        box.open();
+        box.add("еще одна коробочка");
+        box.clear();
+        box.add("кот");
     }
 }
 
