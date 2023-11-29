@@ -105,10 +105,11 @@ public class HomeWork2 {
             System.out.println("Точек сумм левой и правой части нет");
             return;
         }
+        int halfSum = sum / 2;
         int sumElements = 0;
         for (int i = 0; i < array.length; i++) {
             sumElements += array[i];
-            if (sumElements == sum / 2) {
+            if (sumElements == halfSum) {
                 System.out.println("Точка сумм левой и правой части находится между элементами");
                 return;
             }
