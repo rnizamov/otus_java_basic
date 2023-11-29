@@ -27,11 +27,11 @@ public class Main {
                         LocalDate.of(1983, 11, 28), "petr@mail.ru"),
         };
 
-        for (int i = 0; i < users.length; i++) {
-            LocalDate dateOfBirth = users[i].getDateOfBirth();
+        for (User user : users) {
+            LocalDate dateOfBirth = user.getDateOfBirth();
             boolean moreThan40Years = dateOfBirth.plusYears(40).isBefore(LocalDate.now());
             if (moreThan40Years) {
-                users[i].printInfo();
+                user.printInfo();
                 System.out.println();
             }
         }
