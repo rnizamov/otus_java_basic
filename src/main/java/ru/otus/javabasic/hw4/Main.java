@@ -47,7 +47,3 @@ public class Main {
         box.add("кот");
     }
 }
-
-
-
-

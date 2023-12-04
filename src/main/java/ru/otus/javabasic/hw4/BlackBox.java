@@ -5,7 +5,6 @@ public class BlackBox {
     private final int width;
     private final int height;
     private boolean isOpen;
-    private boolean hasObject;
     private String obj;
 
     public BlackBox(int width, int height, String color) {
@@ -31,7 +30,7 @@ public class BlackBox {
     }
 
     public boolean isHasObject() {
-        return hasObject;
+        return !(obj == null);
     }
 
     public void setColor(String color) {
@@ -53,11 +52,11 @@ public class BlackBox {
         System.out.println("width = " + width);
         System.out.println("height = " + height);
         System.out.println("isOpen = " + isOpen);
-        System.out.println("hasObject = " + hasObject);
+        System.out.println("hasObject = " + isHasObject());
     }
 
     public void add(String obj) {
-        if (hasObject) {
+        if (isHasObject()) {
             System.out.println("Коробка не пустая, нужно выбросить предмет");
             return;
         }
@@ -66,12 +65,11 @@ public class BlackBox {
             return;
         }
         this.obj = obj;
-        hasObject = true;
         System.out.println("Предмет добавлен: " + obj);
     }
 
     public void clear() {
-        if(!hasObject) {
+        if(!isHasObject()) {
             System.out.println("Коробка пустая!");
             return;
         }
@@ -81,7 +79,6 @@ public class BlackBox {
         }
         String obj = this.obj;
         this.obj = null;
-        hasObject = false;
         System.out.println("Предмет удален: " + obj);
     }
 }
