@@ -40,7 +40,7 @@ public class HomeWork3 {
 
     //Реализовать метод findMax(int[][] array) который должен найти и вернуть максимальный элемент массива;
     public static int findMax(int[]... array) {
-        int max = 0;
+        int max = array[0][0];
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 if (array[i][j] > max) {
