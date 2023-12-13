@@ -10,7 +10,7 @@ public abstract class Transport implements ITransport {
     protected double maxDistance;
     protected double resources; // ресурсы
     protected double costFactor; // фактор затрат ресурсов на условную единицу дистанции
-    private List<Terrain> lockedTerrain = new ArrayList<>();
+    protected List<Terrain> lockedTerrain = new ArrayList<>();
     protected Human owner;
 
     public Human getOwner() {
