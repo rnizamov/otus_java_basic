@@ -2,7 +2,8 @@ package ru.otus.javabasic.hw14;
 
 public class ArrayCreator {
     public static double[] getDoubleArray(int size) {
-        return new double[size];
+        double[] array = new double[size];
+        return array;
     }
 
     public static void fillArray(double[] array, int i, int end) {
