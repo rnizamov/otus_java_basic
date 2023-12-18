@@ -3,7 +3,7 @@ package ru.otus.javabasic.hw6;
 public class Cat {
     private String name;
     private float appetite;
-    boolean fill;
+    private boolean fill;
 
     public Cat(String name, float appetite) {
         this.name = name;
