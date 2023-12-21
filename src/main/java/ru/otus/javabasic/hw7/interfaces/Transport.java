@@ -1,12 +1,10 @@
 package ru.otus.javabasic.hw7.interfaces;
-
 import ru.otus.javabasic.hw7.Human;
 import ru.otus.javabasic.hw7.constants.Terrain;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Transport implements ITransport {
+public abstract class Transport implements IMove {
     protected double maxDistance;
     protected double resources; // ресурсы
     protected double costFactor; // фактор затрат ресурсов на условную единицу дистанции

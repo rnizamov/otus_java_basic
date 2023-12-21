@@ -1,7 +1,5 @@
 package ru.otus.javabasic.hw7;
-
 import ru.otus.javabasic.hw7.constants.Terrain;
-import ru.otus.javabasic.hw7.interfaces.ITransport;
 import ru.otus.javabasic.hw7.interfaces.Transport;
 import ru.otus.javabasic.hw7.transports.Bike;
 import ru.otus.javabasic.hw7.transports.Car;
@@ -16,10 +14,10 @@ public class App {
     public static void useOfMultipleTransports() {
         Human human = new Human("Vasya", 1000, 500);
 
-        ITransport transport1 = new Bike();
-        ITransport transport2 = new Car(5000, 2000, 15);
-        ITransport transport3 = new Horse(500, 500, 20);
-        ITransport transport4 = new HalfTrack(750, 750, 10);
+        Transport transport1 = new Bike();
+        Transport transport2 = new Car(5000, 2000, 15);
+        Transport transport3 = new Horse(500, 500, 20);
+        Transport transport4 = new HalfTrack(750, 750, 10);
 
         human.useTransport(transport1);
         human.move(12, Terrain.FLATLAND);
@@ -40,8 +38,8 @@ public class App {
 
     public static void changeTransport() {
         Human human = new Human("Vasya", 1000, 500);
-        ITransport transport1 = new Bike();
-        ITransport transport2 = new Car(5000, 20, 1);
+        Transport transport1 = new Bike();
+        Transport transport2 = new Car(5000, 20, 1);
 
         human.useTransport(transport1);
         human.useTransport(transport2);
@@ -52,7 +50,7 @@ public class App {
     public static void takeSomeOneElseSTransport() {
         Human human1 = new Human("Vasya", 1000, 500);
         Human human2 = new Human("Petya", 500, 500);
-        ITransport transport1 = new Bike();
+        Transport transport1 = new Bike();
 
         human1.useTransport(transport1);
         human2.useTransport(transport1);

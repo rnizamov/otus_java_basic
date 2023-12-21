@@ -1,11 +1,13 @@
 package ru.otus.javabasic.hw7;
-import ru.otus.javabasic.hw7.constants.Terrain;
-import ru.otus.javabasic.hw7.interfaces.ITransport;
 
-public class Human {
+import ru.otus.javabasic.hw7.constants.Terrain;
+import ru.otus.javabasic.hw7.interfaces.IMove;
+import ru.otus.javabasic.hw7.interfaces.Transport;
+
+public class Human implements IMove {
     private String name;
     private float maxDistance;
-    private ITransport transport;
+    private Transport transport;
     private float resources;
 
     public Human(String name, float maxDistance, float resources) {
@@ -14,7 +16,7 @@ public class Human {
         this.resources = resources;
     }
 
-    public void useTransport(ITransport transport) {
+    public void useTransport(Transport transport) {
         if (transport.getOwner() == this) {
             System.out.println("Уже используется этот транспорт: " + transport.getClass().getSimpleName());
             return;
@@ -40,53 +42,32 @@ public class Human {
         transport = null;
     }
 
-    public void move(float distance, Terrain terrain) {
+    @Override
+    public boolean move(double distance, Terrain terrain) {
         System.out.println();
         if (transport != null) {
-            switch (transport.getClass().getSimpleName()) {
-                case ("Bike"):
-                    movementOnTransport(distance, terrain, 4);
-                    break;
-                case ("Car"):
-                    movementOnTransport(distance, terrain, 1);
-                    break;
-                case ("HalfTrack"):
-                    movementOnTransport(distance, terrain, 2);
-                    break;
-                case ("Horse"):
-                    movementOnTransport(distance, terrain, 3);
-                    break;
-            }
+            return transport.move(distance, terrain);
         } else {
-            walking(distance, terrain);
+            return walking(distance, terrain);
         }
-        info();
     }
 
-    private void movementOnTransport(float distance, Terrain terrain, float costFactor) {
-        float requiredResources = distance * costFactor;
-        if (requiredResources > resources) {
-            System.out.println("не хватает сил для передвижения");
-            return;
-        }
-        transport.move(distance, terrain);
-        resources -= requiredResources;
-    }
-
-    private void walking(float distance, Terrain terrain) {
-        float requiredResources = distance * 5;
+    private boolean walking(double distance, Terrain terrain) {
+        double requiredResources = distance * 5;
         if (distance > maxDistance) {
             System.out.println("Так далеко пешком не пройду!");
             System.out.println("distance: " + distance + " maxDistance " + maxDistance);
-            return;
+            return false;
         }
         if (requiredResources > resources) {
             System.out.println("не хватает сил для передвижения");
-            return;
+            return false;
         }
         resources -= requiredResources;
         maxDistance -= distance;
         System.out.println(name + " прошел пешком расстояние: " + distance + " по локации " + terrain.getName());
+        info();
+        return true;
     }
 
     public void info() {
