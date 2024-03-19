@@ -1,7 +1,6 @@
 package ru.otus.javabasic.hw14;
 
-import static ru.otus.javabasic.hw14.ArrayCreator.fillArray;
-import static ru.otus.javabasic.hw14.ArrayCreator.getDoubleArray;
+import static ru.otus.javabasic.hw14.ArrayHelper.fillArray;
 
 public class MultithreadedApp {
     static final int SIZE_ARRAY = 100_000_000;
@@ -12,14 +11,14 @@ public class MultithreadedApp {
 
     public static void fillArrayByOneThread(int sizeArray) {
         long time1 = System.currentTimeMillis();
-        double[] array = getDoubleArray(sizeArray);
+        double[] array = new double[sizeArray];
         fillArray(array, 0, array.length);
         System.out.println("Время заполнения массива в одном потоке: " + (System.currentTimeMillis() - time1));
     }
 
     public static void fillArrayByMultiThreading(int sizeArray, int countThreads) throws InterruptedException {
         long time1 = System.currentTimeMillis();
-        double[] array = getDoubleArray(sizeArray);
+        double[] array = new double[sizeArray];
         int part = array.length / countThreads;
         Thread[] threadArray = new Thread[countThreads];
         for (int i = 0; i < countThreads; i++) {
