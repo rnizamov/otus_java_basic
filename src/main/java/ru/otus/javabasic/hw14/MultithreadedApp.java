@@ -1,9 +1,12 @@
 package ru.otus.javabasic.hw14;
 
+import java.util.Arrays;
+
 import static ru.otus.javabasic.hw14.ArrayHelper.fillArray;
 
 public class MultithreadedApp {
     static final int SIZE_ARRAY = 100_000_000;
+
     public static void main(String[] args) throws InterruptedException {
         fillArrayByOneThread(SIZE_ARRAY);
         fillArrayByMultiThreading(SIZE_ARRAY, 4);
@@ -20,14 +23,18 @@ public class MultithreadedApp {
         long time1 = System.currentTimeMillis();
         double[] array = new double[sizeArray];
         int part = array.length / countThreads;
+        int sum = 0;
         Thread[] threadArray = new Thread[countThreads];
         for (int i = 0; i < countThreads; i++) {
             int start = part * i;
             int end = part * (i + 1);
-            threadArray[i] = new Thread(() -> fillArray(array, start, end));
-        }
-        for (Thread thread : threadArray) {
-            thread.start();
+            sum += part;
+            if (i == countThreads - 1 && sum != array.length) { // если теряется часть элементов, докинуть в последний поток
+                end += array.length - sum;
+            }
+            int finalEnd = end;
+            threadArray[i] = new Thread(() -> fillArray(array, start, finalEnd));
+            threadArray[i].start();
         }
         for (Thread thread : threadArray) {
             thread.join();
