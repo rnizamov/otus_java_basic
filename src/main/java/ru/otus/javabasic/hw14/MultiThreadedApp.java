@@ -1,10 +1,8 @@
 package ru.otus.javabasic.hw14;
 
-import java.util.Arrays;
-
 import static ru.otus.javabasic.hw14.ArrayHelper.fillArray;
 
-public class MultithreadedApp {
+public class MultiThreadedApp {
     static final int SIZE_ARRAY = 100_000_000;
 
     public static void main(String[] args) throws InterruptedException {
@@ -29,7 +27,7 @@ public class MultithreadedApp {
             int start = part * i;
             int end = part * (i + 1);
             sum += part;
-            if (i == countThreads - 1 && sum != array.length) { // если теряется часть элементов, докинуть в последний поток
+            if (i == countThreads - 1 && sum != array.length) {
                 end += array.length - sum;
             }
             int finalEnd = end;
