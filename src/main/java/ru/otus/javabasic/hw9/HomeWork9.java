@@ -1,12 +1,10 @@
 package ru.otus.javabasic.hw9;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class HomeWork9 {
-    public static List getRangeList(int min, int max) {
+    public static List<Integer> getRangeList(int min, int max) {
         List<Integer> list = new ArrayList<>();
         for (int i = min; i <= max; i++) {
             list.add(i);
@@ -31,23 +29,23 @@ public class HomeWork9 {
     }
 
     public static List<String> getEmployeeNames(List<Employee> employees) {
-        return employees.stream().map(e -> e.getName()).collect(Collectors.toList());
+        return employees.stream().map(Employee::getName).collect(Collectors.toList());
     }
 
     public static List<Employee> getEmployeeWithAgeGreaterOrEqualsThan(List<Employee> list, int age) {
         return list.stream().filter(e -> e.getAge() >= age).collect(Collectors.toList());
     }
 
-    public static boolean isAverageAgeEmployee(List<Employee> employee, int average) {
-        return employee.stream().allMatch(e -> e.getAge() > average);
+    public static boolean isAverageAgeEmployeeGreaterThan(List<Employee> employee, double average) {
+        OptionalDouble opt = employee.stream().mapToInt(e->e.getAge()).average() ;
+        if (opt.isPresent()) {
+            return opt.getAsDouble() > average;
+        }
+        return false;
     }
 
     public static Employee getYoungestEmployee(List<Employee> list) {
-        return list.stream().min((Employee emp1, Employee emp2) -> {
-            if (emp1.getAge() > emp2.getAge()) {
-                return 1;
-            }
-            return -1;
-        }).get();
+        Optional<Employee> opt = list.stream().min(Comparator.comparingInt(Employee::getAge));
+        return opt.orElse(null);
     }
 }
