@@ -1,0 +1,8 @@
+select u.first_name as имя, u.last_name as фамилия, u.middle_name, ur.rating as оценка, t.test_name as название_теста,  t.description as описание_теста,
+t.level as уровень_сложности from users u left join user_rating ur ON u.id = ur.user_id
+left join test t on ur.test_id = t.id;
+
+select u.first_name, avg(ur.rating) as оценка from users u left join user_rating ur ON u.id = ur.user_id
+left join test t on ur.test_id = t.id
+group by u.first_name;
+
