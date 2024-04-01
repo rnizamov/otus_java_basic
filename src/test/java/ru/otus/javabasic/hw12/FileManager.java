@@ -52,20 +52,9 @@ public class FileManager {
     }
 
     private void appendToFile(String fileName, String text) {
-        StringBuilder sb = new StringBuilder();
-        try (InputStreamReader in = new InputStreamReader(new BufferedInputStream(new FileInputStream(fileName)))) {
-            int n = in.read();
-            while (n != -1) {
-                sb.append((char) n);
-                n = in.read();
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(fileName))) {
-            sb.append("\n");
-            sb.append(text);
-            byte[] buffer = sb.toString().getBytes(StandardCharsets.UTF_8);
+        text = "\n" + text;
+        try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(fileName, true))) {
+            byte[] buffer = text.getBytes(StandardCharsets.UTF_8);
             for (int i = 0; i < buffer.length; i++) {
                 out.write(buffer[i]);
             }
