@@ -62,9 +62,13 @@ public class FileManager {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        try (OutputStreamWriter out = new OutputStreamWriter(new BufferedOutputStream(new FileOutputStream(fileName)))) {
+        try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(fileName))) {
+            sb.append("\n");
             sb.append(text);
-            out.write(sb.toString());
+            byte[] buffer = sb.toString().getBytes(StandardCharsets.UTF_8);
+            for (int i = 0; i < buffer.length; i++) {
+                out.write(buffer[i]);
+            }
             out.flush();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
