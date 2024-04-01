@@ -28,7 +28,7 @@ public class FileManager {
     private void printFile(String fileName) {
         System.out.println("Содержание файла:");
         System.out.println();
-        try (InputStreamReader in = new InputStreamReader(new FileInputStream(fileName))) {
+        try (InputStreamReader in = new InputStreamReader(new BufferedInputStream(new FileInputStream(fileName)))) {
             int n = in.read();
             while (n != -1) {
                 System.out.print((char) n);
@@ -53,7 +53,7 @@ public class FileManager {
 
     private void appendToFile(String fileName, String text) {
         StringBuilder sb = new StringBuilder();
-        try (InputStreamReader in = new InputStreamReader(new FileInputStream(fileName))) {
+        try (InputStreamReader in = new InputStreamReader(new BufferedInputStream(new FileInputStream(fileName)))) {
             int n = in.read();
             while (n != -1) {
                 sb.append((char) n);
@@ -62,7 +62,7 @@ public class FileManager {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        try (OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(fileName))) {
+        try (OutputStreamWriter out = new OutputStreamWriter(new BufferedOutputStream(new FileOutputStream(fileName)))) {
             sb.append(text);
             out.write(sb.toString());
             out.flush();
