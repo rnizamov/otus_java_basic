@@ -45,7 +45,7 @@ public class FileManager {
 
     /**
      * This method prints the text content of the file and does not return the value.
-     * @param fileName String value. File name of the file to be printed to the console.
+     * @param fileName String value, file name of the file to be printed to the console.
      */
     private void printFile(String fileName) {
         System.out.println("Содержание файла:");
