@@ -41,9 +41,7 @@ public class FileManager {
     }
 
     private String askUserToWorkWithFile() {
-        System.out.println();
-        System.out.println("Введите текст который вы ходите добавить к файлу. :qa! для выхода");
-        System.out.println();
+        System.out.println("\nВведите текст который вы ходите добавить к файлу. :qa! для выхода\n");
         String response = scanner.nextLine();
         if (response.equals(":qa!") || response.strip().equals("")) {
             return null;
@@ -58,7 +56,6 @@ public class FileManager {
             for (int i = 0; i < buffer.length; i++) {
                 out.write(buffer[i]);
             }
-            out.flush();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -80,9 +77,9 @@ public class FileManager {
         File[] listFiles = file.listFiles();
         files = Arrays.stream(listFiles).filter(File::isFile).collect(Collectors.toList());
         if (files.size() > 0) {
-            System.out.println("Список файлов в корневом проекте:");
-            for (int i = 0; i < files.size(); i++) {
-                System.out.println(i + 1 + " " + files.get(i).getName());
+            System.out.printf("Список файлов в корневом проекте(%d):\n", files.size());
+            for (File f : files) {
+                System.out.println(f.getName());
             }
             System.out.println();
         }
