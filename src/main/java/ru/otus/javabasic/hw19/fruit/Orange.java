@@ -8,7 +8,7 @@ public class Orange extends Fruit{
     @Override
     public String toString() {
         return "Orange{" +
-                "density=" + density +
+                "weight=" + weight +
                 ", name='" + name + '\'' +
                 '}';
     }

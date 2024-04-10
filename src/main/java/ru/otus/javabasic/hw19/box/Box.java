@@ -1,11 +1,12 @@
 package ru.otus.javabasic.hw19.box;
+
 import ru.otus.javabasic.hw19.fruit.Fruit;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Box <E extends Fruit> implements Comparable<Box<?>>{
+public class Box<E extends Fruit> implements Comparable<Box<?>> {
     private final List<E> storage = new ArrayList<>();
 
     public Box() {
@@ -18,7 +19,7 @@ public class Box <E extends Fruit> implements Comparable<Box<?>>{
     public Double weight() {
         double weight = 0.0;
         for (E e : storage) {
-            weight += e.getDensity();
+            weight += e.getWeight();
         }
         return weight;
     }
@@ -35,7 +36,7 @@ public class Box <E extends Fruit> implements Comparable<Box<?>>{
     }
 
     public boolean remove(int index) {
-        if (index + 1 > storage.size())  {
+        if (index + 1 > storage.size()) {
             return false;
         } else {
             storage.remove(index);
@@ -58,10 +59,7 @@ public class Box <E extends Fruit> implements Comparable<Box<?>>{
     }
 
     public boolean compare(Box<?> o) {
-        if (compareTo(o) == 0) {
-            return true;
-        }
-        return false;
+        return compareTo(o) == 0;
     }
 
     @Override
