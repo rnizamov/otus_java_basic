@@ -45,6 +45,7 @@ public class FileManager {
 
     /**
      * This method prints the text content of the file and does not return the value.
+     *
      * @param fileName String value, file name of the file to be printed to the console.
      */
     private void printFile(String fileName) {
@@ -64,6 +65,7 @@ public class FileManager {
 
     /**
      * A method for dialogue with the user asking to enter text to be added to a file or to exit.
+     *
      * @return String value, text content or null.
      */
     private String askUserToWorkWithFile() {
@@ -77,16 +79,15 @@ public class FileManager {
 
     /**
      * This method is for appending text to a file on a new line.
+     *
      * @param fileName String file name text will be written.
-     * @param text text content to be written to the file.
+     * @param text     text content to be written to the file.
      */
     private void appendToFile(String fileName, String text) {
         text = "\n" + text;
         try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(fileName, true))) {
             byte[] buffer = text.getBytes(StandardCharsets.UTF_8);
-            for (int i = 0; i < buffer.length; i++) {
-                out.write(buffer[i]);
-            }
+            out.write(buffer);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -96,6 +97,7 @@ public class FileManager {
 
     /**
      * A method for dialogue with the user offering to select a file to work on or exit.
+     *
      * @return String value, file name or null.
      */
     private String askUserFileName() {
