@@ -12,8 +12,6 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class TextFinder {
-    private final File file = new File(".");
-    private List<File> files = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
 
     public TextFinder() {
@@ -46,10 +44,14 @@ public class TextFinder {
     }
 
     private void printFiles() {
-        File[] listFiles = file.listFiles();
-        files = Arrays.stream(listFiles).filter(File::isFile).collect(Collectors.toList());
-        if (files.size() > 0) {
-            System.out.printf("Список файлов в корневом проекте(%d):\n", files.size());
+        File[] listFiles = new File(".").listFiles();
+        if (listFiles == null) {
+            System.out.println("Нету файлов для работы");
+            return;
+        }
+        List<File> files = Arrays.stream(listFiles).filter(File::isFile).collect(Collectors.toList());
+        if (!files.isEmpty()) {
+            System.out.printf("Список файлов в корневом проекте(%d):%n", files.size());
             for (File f : files) {
                 System.out.println(f.getName());
             }
