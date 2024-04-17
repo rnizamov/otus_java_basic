@@ -2,12 +2,12 @@ package ru.otus.javabasic.hw21;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class MultiThreadPrintCharSequens {
+public class MultiThreadPrintCharSequence {
     private final Object monitor = new Object();
     private char[] charMask;
     private char ch;
 
-    public MultiThreadPrintCharSequens(char[] charMask) {
+    public MultiThreadPrintCharSequence(char[] charMask) {
         this.charMask = charMask;
         ch = charMask[charMask.length - 1];
     }
