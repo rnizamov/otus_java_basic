@@ -39,4 +39,3 @@ public class ElementsAfterLastOneTest {
         return out.stream();
     }
 }
-
