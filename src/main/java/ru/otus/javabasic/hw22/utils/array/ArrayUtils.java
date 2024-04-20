@@ -1,6 +1,5 @@
 package ru.otus.javabasic.hw22.utils.array;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -37,9 +36,6 @@ public class ArrayUtils {
                 list2.add(arr[i]);
             }
         }
-        if (list.size() != list2.size()) {
-            return false;
-        }
-        return true;
+        return list.size() == list2.size();
     }
 }
