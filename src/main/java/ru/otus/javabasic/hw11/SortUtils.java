@@ -1,31 +1,54 @@
 package ru.otus.javabasic.hw11;
 
-import java.util.Arrays;
-
 public class SortUtils {
-    public static void bubbleSort(int array[]) {
+    public static void bubbleSort(int arr[]) {
         boolean needSort = true;
         while (needSort) {
             needSort = false;
-            for (int i = 0; i < array.length - 1; i++) {
+            for (int i = 0; i < arr.length - 1; i++) {
                 int buff = 0;
-                if (array[i] > array[i+1]) {
-                    buff = array[i+1];
-                    array[i+1] = array[i];
-                    array[i] = buff;
+                if (arr[i] > arr[i + 1]) {
+                    buff = arr[i + 1];
+                    arr[i + 1] = arr[i];
+                    arr[i] = buff;
                     needSort = true;
                 }
             }
         }
     }
 
-    public static void quickSort(int array[]) {
+    public static void quickSort(int arr[], int start, int end) {
+        if (arr.length == 0) {
+            return;
+        }
 
-    }
+        int pivotIndex = start + (end - start) / 2;
+        int pivotEl = arr[pivotIndex];
 
-    public static void main(String[] args) {
-        int[] arr = {9,5,2,4,1,2,12,124,444};
+        int i = start;
+        int j = end;
 
-        bubbleSort(arr);
+        while (i <= j) {
+            while (arr[i] < pivotEl) {
+                i++;
+            }
+            while (arr[j] > pivotEl) {
+                j--;
+            }
+            if (i <= j) {
+                int cache = arr[i];
+                arr[i] = arr[j];
+                arr[j] = cache;
+                i++;
+                j--;
+            }
+        }
+
+        if (start < j) {
+            quickSort(arr, start, j);
+        }
+        if (end > i) {
+            quickSort(arr, i, end);
+        }
     }
 }
