@@ -1,7 +1,7 @@
 package ru.otus.javabasic.hw11;
 
 public class SortUtils {
-    public static void bubbleSort(int arr[]) {
+    public static void bubbleSort(int[] arr) {
         boolean needSort = true;
         while (needSort) {
             needSort = false;
@@ -17,7 +17,7 @@ public class SortUtils {
         }
     }
 
-    public static void quickSort(int arr[], int start, int end) {
+    public static void quickSort(int[] arr, int start, int end) {
         if (arr.length == 0) {
             return;
         }

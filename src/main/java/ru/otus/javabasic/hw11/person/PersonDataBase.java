@@ -27,10 +27,7 @@ public class PersonDataBase {
     }
 
     public boolean isManager(Person person) {
-        if (managers.contains(person.getPosition())) {
-            return true;
-        }
-        return false;
+        return managers.contains(person.getPosition());
     }
 
     public boolean isEmployee(Long id) {
