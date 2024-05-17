@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/><style>
+table {border: medium solid #6495ed;border-collapse: collapse;width: 100%;} th{font-family: monospace;border: thin solid #6495ed;padding: 5px;background-color: #D0E3FA;}th{text-align: left;}td{font-family: sans-serif;border: thin solid #6495ed;padding: 5px;text-align: center;}.odd{background:#e8edff;}img{padding:5px; border:solid; border-color: #dddddd #aaaaaa #aaaaaa #dddddd; border-width: 1px 2px 2px 1px; background-color:white;}</style>
+</head>
+<body>
+<table><tr><th colspan="7"><pre><code>select u.first_name as имя, u.last_name as фамилия, u.middle_name, ur.rating as оценка, t.test_name as название_теста,  t.description as описание_теста,<br>t.level as уровень_сложности from users u left join user_rating ur ON u.id = ur.user_id<br>left join test t on ur.test_id = t.id</code></pre></th></tr><tr><th>имя</th><th>фамилия</th><th>middle_name</th><th>оценка</th><th>название_теста</th><th>описание_теста</th><th>уровень_сложности</th></tr><tr class="odd"><td>Rinat</td><td>Nizamov</td><td>Rustemovich</td><td>5</td><td>Java программирование</td><td>тест на знание основ java</td><td>junior</td></tr>
+<tr><td>Rinat</td><td>Nizamov</td><td>Rustemovich</td><td>4</td><td>Selenium test</td><td>Знанием основ selenium</td><td>junior</td></tr>
+</table></body></html>
